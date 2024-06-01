@@ -12,6 +12,7 @@ const EditProducts = () => {
   const [image_url, setImageURL] = useState(shoe.image_url);
 
   const handleSubmit = async (e) => {
+    const token = localStorage.getItem('token')
     e.preventDefault();
     const from = e.target;
 
@@ -27,6 +28,7 @@ const EditProducts = () => {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
+        authorization : `Bearer ${token}`
       },
       body: JSON.stringify(data),
     })
