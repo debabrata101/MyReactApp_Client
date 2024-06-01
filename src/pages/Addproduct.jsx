@@ -2,6 +2,7 @@ import toast from "react-hot-toast";
 
 const Addproduct = () => {
   const handleSubmit = async (e) => {
+    const token = localStorage.getItem('token');
     e.preventDefault();
     const from = e.target;
     const title = from.title.value;
@@ -16,6 +17,7 @@ const Addproduct = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization : `Bearer ${token}`
       },
       body:JSON.stringify(data),
     })
